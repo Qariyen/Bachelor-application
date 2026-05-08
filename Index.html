@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ariyen Qarlik — EU Business School Application</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F5F1EA; --ink: #1A1714; --ink-soft: #4A4540;
+      --gold: #B8935A; --gold-light: #E8D9C0;
+      --green: #2D4A3E; --green-light: #C8DDD6;
+      --white: #FFFFFF; --border: rgba(26,23,20,0.12);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: rgba(245,241,234,0.85); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 18px; letter-spacing: -0.02em; color: var(--ink); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--ink-soft); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(184,147,90,0.12) 0%, transparent 70%); pointer-events: none; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+    .hero-eyebrow::before, .hero-eyebrow::after { content: ''; flex: 1; max-width: 60px; height: 0.5px; background: var(--gold); }
+    .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.0; letter-spacing: -0.03em; color: var(--ink); }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-location { font-size: 13px; color: var(--ink-soft); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 1.25rem; }
+    .scroll-hint { margin-top: 4rem; font-size: 12px; color: var(--ink-soft); letter-spacing: 0.08em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .scroll-line { width: 0.5px; height: 40px; background: var(--gold); animation: grow 1.4s ease-in-out infinite; }
+    @keyframes grow { 0%,100%{transform:scaleY(0.3);opacity:0.3} 50%{transform:scaleY(1);opacity:1} }
+
+    section { padding: 6rem 2rem; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .section-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 0.75rem; }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 2.5rem; }
+    .divider { height: 0.5px; background: var(--border); margin: 0 2rem; }
+    .about-text p { color: var(--ink-soft); margin-bottom: 1rem; }
+
+    .media-box { margin-top: 2.5rem; border: 1.5px dashed var(--gold-light); border-radius: 12px; background: var(--white); overflow: hidden; position: relative; cursor: pointer; }
+    .media-box input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 2; width: 100%; height: 100%; }
+    .media-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 3rem 2rem; text-align: center; pointer-events: none; }
+    .media-placeholder svg { opacity: 0.35; }
+    .media-placeholder p { font-size: 13px; color: var(--ink-soft); }
+    .media-placeholder span { font-size: 12px; color: var(--gold); font-weight: 500; }
+    .media-result { display: none; }
+    .media-result video { width: 100%; display: block; border-radius: 10px; }
+
+    /* DOCS */
+    .doc-list { display: flex; flex-direction: column; gap: 8px; }
+    .doc-item { display: flex; align-items: flex-start; gap: 1.5rem; padding: 1.5rem 1.75rem; background: rgba(255,255,255,0.06); border: 0.5px solid rgba(245,241,234,0.1); border-left: 3px solid transparent; border-radius: 4px; transition: background 0.2s; }
+    .doc-item:hover { background: rgba(255,255,255,0.1); }
+    .doc-item.done { border-left-color: #5DCAA5; }
+    .doc-item.pending { border-left-color: var(--gold); }
+    .doc-item.later { border-left-color: rgba(245,241,234,0.15); }
+    .doc-num { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: rgba(245,241,234,0.15); min-width: 32px; }
+    .doc-content { flex: 1; }
+    .doc-name { font-size: 15px; font-weight: 500; color: var(--cream); margin-bottom: 4px; }
+    .doc-detail { font-size: 13px; color: rgba(245,241,234,0.5); margin-bottom: 10px; }
+    .doc-badge { font-size: 11px; padding: 4px 12px; border-radius: 99px; white-space: nowrap; align-self: flex-start; flex-shrink: 0; }
+    .badge-ready { background: rgba(93,202,165,0.12); color: #5DCAA5; }
+    .badge-pending { background: rgba(184,147,90,0.12); color: var(--gold); }
+    .badge-later { background: rgba(245,241,234,0.06); color: rgba(245,241,234,0.4); }
+
+    /* STATIC PREVIEW ROW */
+    .doc-static-preview { border: 1.5px solid rgba(184,147,90,0.25); border-radius: 8px; background: rgba(245,241,234,0.04); overflow: hidden; }
+    .doc-static-preview-row { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; gap: 10px; flex-wrap: wrap; }
+    .doc-static-info { display: flex; align-items: center; gap: 10px; }
+    .doc-static-info svg { opacity: 0.45; flex-shrink: 0; }
+    .doc-static-info span { font-size: 11px; color: #5DCAA5; font-weight: 500; }
+    .btn-row { display: flex; gap: 8px; align-items: center; }
+
+    /* UPLOAD BOXES */
+    .doc-upload { border: 1.5px dashed rgba(184,147,90,0.35); border-radius: 8px; background: rgba(245,241,234,0.04); position: relative; overflow: hidden; cursor: pointer; }
+    .doc-upload input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 2; width: 100%; height: 100%; }
+    .doc-upload-row { display: flex; align-items: center; gap: 10px; padding: 0.7rem 1rem; pointer-events: none; }
+    .doc-upload-row svg { flex-shrink: 0; opacity: 0.45; }
+    .doc-upload-row p { font-size: 12px; color: rgba(245,241,234,0.55); }
+    .doc-upload-row span { font-size: 11px; color: var(--gold); font-weight: 500; display: block; margin-top: 2px; }
+    .doc-upload-result { display: none; }
+    .pdf-done { padding: 0.7rem 1rem; font-size: 13px; color: #5DCAA5; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+
+    /* VIEW BUTTON — bold gold, highly visible */
+    .view-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 600;
+      color: #1A1714;
+      background: var(--gold);
+      border: none; outline: none;
+      padding: 9px 22px; border-radius: 99px; cursor: pointer;
+      transition: background 0.18s, transform 0.15s;
+      text-decoration: none; white-space: nowrap; flex-shrink: 0;
+    }
+    .view-btn:hover { background: #c9a368; transform: scale(1.04); }
+    .view-btn:active { transform: scale(0.97); }
+
+    /* DOWNLOAD BUTTON */
+    .dl-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 500;
+      color: rgba(245,241,234,0.65);
+      background: rgba(245,241,234,0.07);
+      border: 0.5px solid rgba(245,241,234,0.18);
+      padding: 9px 18px; border-radius: 99px; cursor: pointer;
+      transition: background 0.2s; text-decoration: none; white-space: nowrap; flex-shrink: 0;
+    }
+    .dl-btn:hover { background: rgba(245,241,234,0.13); }
+
+    /* LETTER SLOTS */
+    .letter-pair { display: flex; flex-direction: column; gap: 8px; }
+    .letter-slot { border: 1.5px dashed rgba(184,147,90,0.35); border-radius: 8px; background: rgba(245,241,234,0.04); position: relative; overflow: hidden; cursor: pointer; }
+    .letter-slot input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 2; width: 100%; height: 100%; }
+    .letter-slot-row { display: flex; align-items: center; gap: 10px; padding: 0.65rem 1rem; pointer-events: none; }
+    .letter-slot-row svg { flex-shrink: 0; opacity: 0.45; }
+    .letter-slot-row p { font-size: 13px; color: rgba(245,241,234,0.65); font-weight: 500; }
+    .letter-slot-row span { font-size: 11px; color: var(--gold); font-weight: 500; display: block; margin-top: 1px; }
+    .letter-done { padding: 0.65rem 1rem; font-size: 13px; color: #5DCAA5; font-weight: 500; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+    /* SELFIE — small portrait thumbnail */
+    .selfie-wrap { display: flex; align-items: center; gap: 14px; margin-top: 4px; }
+    .selfie-thumb { width: 68px; height: 86px; object-fit: cover; border-radius: 6px; border: 2px solid rgba(184,147,90,0.45); cursor: pointer; transition: transform 0.18s, border-color 0.18s; flex-shrink: 0; display: block; }
+    .selfie-thumb:hover { transform: scale(1.07); border-color: var(--gold); }
+
+    /* LÅNEKASSEN INFO */
+    .lanekassen-box { border: 1.5px solid rgba(93,202,165,0.22); border-radius: 8px; background: rgba(93,202,165,0.05); padding: 1rem 1.2rem; margin-bottom: 10px; }
+    .lanekassen-box p { font-size: 13px; color: rgba(245,241,234,0.62); line-height: 1.65; margin-bottom: 10px; }
+    .lanekassen-link { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #5DCAA5; border-bottom: 0.5px solid rgba(93,202,165,0.4); text-decoration: none; transition: color 0.2s; }
+    .lanekassen-link:hover { color: #7edfc0; }
+
+    /* SCROLL BUTTON */
+    .scroll-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gold); font-weight: 500; background: rgba(184,147,90,0.1); border: 0.5px solid rgba(184,147,90,0.3); padding: 6px 14px; border-radius: 99px; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .scroll-btn:hover { background: rgba(184,147,90,0.2); }
+
+    /* ENGLISH SECTION */
+    .english-box { background: rgba(255,255,255,0.06); border: 0.5px solid rgba(200,221,214,0.15); border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem; }
+    .english-row { display: flex; align-items: center; gap: 10px; padding: 1rem 1.5rem; border-bottom: 0.5px solid rgba(255,255,255,0.07); font-size: 14px; }
+    .english-row:last-child { border-bottom: none; }
+    .elabel { color: rgba(200,221,214,0.55); width: 200px; flex-shrink: 0; }
+    .eval { color: var(--cream); font-weight: 500; }
+    .eval-badge { background: rgba(93,202,165,0.15); color: #5DCAA5; padding: 3px 10px; border-radius: 99px; font-size: 12px; margin-left: 8px; }
+
+    /* GRADE PREVIEW */
+    .grade-static-preview { border: 1.5px solid rgba(200,221,214,0.2); border-radius: 12px; background: rgba(255,255,255,0.03); overflow: hidden; }
+    .grade-static-preview-row { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.25rem; gap: 12px; flex-wrap: wrap; }
+    .grade-static-info { display: flex; align-items: center; gap: 10px; }
+    .grade-static-info svg { opacity: 0.35; }
+    .grade-static-info p { font-size: 13px; color: var(--green-light); }
+    .grade-static-info span { font-size: 12px; color: rgba(200,221,214,0.4); display: block; margin-top: 2px; }
+
+    /* PORTFOLIO */
+    .portfolio-link { display: block; padding: 3rem; background: var(--white); border: 0.5px solid var(--border); text-decoration: none; transition: box-shadow 0.25s, transform 0.25s; position: relative; overflow: hidden; }
+    .portfolio-link::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(184,147,90,0.05) 0%, transparent 60%); pointer-events: none; }
+    .portfolio-link:hover { box-shadow: 0 12px 40px rgba(26,23,20,0.1); transform: translateY(-2px); }
+    .portfolio-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
+    .portfolio-title { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--ink); line-height: 1.1; }
+    .portfolio-arrow { width: 48px; height: 48px; border: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--gold); transition: background 0.2s; }
+    .portfolio-link:hover .portfolio-arrow { background: var(--gold); color: var(--white); }
+    .portfolio-desc { font-size: 14px; color: var(--ink-soft); max-width: 560px; margin-bottom: 1.5rem; line-height: 1.7; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { font-size: 12px; padding: 5px 14px; border: 0.5px solid var(--border); color: var(--ink-soft); background: var(--cream); }
+    .portfolio-url { margin-top: 1.5rem; font-size: 13px; color: var(--gold); letter-spacing: 0.04em; }
+
+    .contact-section { background: var(--ink); padding: 5rem 2rem; text-align: center; }
+    .contact-section .section-label { color: var(--gold); }
+    .contact-title { font-family: 'DM Serif Display', serif; font-size: clamp(2.5rem, 6vw, 5rem); color: var(--cream); margin-bottom: 1rem; letter-spacing: -0.03em; }
+    .contact-title em { font-style: italic; color: var(--gold); }
+    .contact-sub { font-size: 15px; color: rgba(245,241,234,0.5); margin-bottom: 2.5rem; }
+    .contact-email { display: inline-block; font-size: 16px; color: var(--cream); border-bottom: 0.5px solid var(--gold); padding-bottom: 4px; text-decoration: none; transition: color 0.2s; }
+    .contact-email:hover { color: var(--gold); }
+    .contact-footer { margin-top: 4rem; font-size: 12px; color: rgba(245,241,234,0.25); letter-spacing: 0.06em; text-transform: uppercase; }
+
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* LIGHTBOX */
+    #lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(10,8,6,0.96); align-items: center; justify-content: center; cursor: zoom-out; }
+    #lightbox.open { display: flex; }
+    #lightbox-img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: 6px; cursor: default; }
+    #lightbox-close { position: fixed; top: 1.25rem; right: 1.75rem; font-size: 2.4rem; color: rgba(245,241,234,0.45); cursor: pointer; line-height: 1; z-index: 10000; transition: color 0.2s; }
+    #lightbox-close:hover { color: var(--cream); }
+    #lightbox-toolbar { position: fixed; bottom: 1.75rem; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 14px; }
+    #lightbox-caption { font-size: 12px; color: rgba(245,241,234,0.35); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+    #lightbox-dl { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: #1A1714; background: var(--gold); border: none; padding: 9px 22px; border-radius: 99px; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    #lightbox-dl:hover { background: #c9a368; }
+
+    @media (max-width: 680px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .doc-item { flex-wrap: wrap; }
+      .doc-static-preview-row, .grade-static-preview-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox(event)">
+  <span id="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="" />
+  <div id="lightbox-toolbar">
+    <span id="lightbox-caption"></span>
+    <a id="lightbox-dl" href="#" download>
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download
+    </a>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">Ariyen Qarlik</div>
+  <ul class="nav-links">
+    <li><a href="#about"></a></li>
+    <li><a href="#documents">Documents</a></li>
+    <li><a href="#english">English</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">EU Business School — Application</div>
+  <h1>Ariyen<br><em>Qarlik</em></h1>
+  <p class="hero-location">Oslo, Norway</p>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<div class="divider"></div>
+
+<!-- DOCUMENTS -->
+<section id="documents" style="background:var(--ink);">
+  <div class="container fade-up">
+    <div class="section-label" style="color:var(--gold);">Application checklist</div>
+    <h2 class="section-title" style="color:var(--cream);">Required documents</h2>
+    <div class="doc-list">
+
+      <!-- 01 — Diploma -->
+      <div class="doc-item pending">
+        <div class="doc-num">01</div>
+        <div class="doc-content">
+          <div class="doc-name">High school diploma &amp; transcripts</div>
+          <div class="doc-detail">Certified copy.</div>
+          <div class="doc-static-preview">
+            <div class="doc-static-preview-row">
+              <div class="doc-static-info">
+                <svg width="18" height="18" fill="none" stroke="#B8935A" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+                <span>Diploma / transcript added ✓</span>
+              </div>
+              <div class="btn-row">
+                <button class="view-btn" onclick="openLightbox('ARK1.png','High school diploma &amp; transcripts','ARK1.png')">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  View
+                </button>
+                <a class="dl-btn" href="ARK1.png" download>
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="doc-badge badge-pending">To prepare</span>
+      </div>
+
+      <!-- 02 -->
+      <div class="doc-item done">
+        <div class="doc-num">02</div>
+        <div class="doc-content">
+          <div class="doc-name">Proof of English proficiency</div>
+          <div class="doc-detail">Engelsk VG1 — grade 5. Covered by transcript above.</div>
+        </div>
+        <span class="doc-badge badge-ready">✓</span>
+      </div>
+
+      <!-- 03 — Two letter slots -->
+      <div class="doc-item pending">
+        <div class="doc-num">03</div>
+        <div class="doc-content">
+          <div class="doc-name">2 letters of recommendation</div>
+          <div class="doc-detail">From employers or mentors.</div>
+          <div class="letter-pair">
+
+            <div class="letter-slot" id="letter1">
+              <input type="file" accept=".pdf,image/*" onchange="loadLetter(this,1)" />
+              <div class="letter-slot-row" id="letter1-row">
+                <svg width="16" height="16" fill="none" stroke="#B8935A" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <div><p>Letter 1</p><span>Click to upload PDF or image</span></div>
+              </div>
+              <div id="letter1-done" style="display:none;"></div>
+            </div>
+
+            <div class="letter-slot" id="letter2">
+              <input type="file" accept=".pdf,image/*" onchange="loadLetter(this,2)" />
+              <div class="letter-slot-row" id="letter2-row">
+                <svg width="16" height="16" fill="none" stroke="#B8935A" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <div><p>Letter 2</p><span>Click to upload PDF or image</span></div>
+              </div>
+              <div id="letter2-done" style="display:none;"></div>
+            </div>
+
+          </div>
+        </div>
+        <span class="doc-badge badge-pending">To prepare</span>
+      </div>
+
+ <!-- 04 -->
+<div class="doc-item pending">
+  <div class="doc-num">04</div>
+  <div class="doc-content">
+    <div class="doc-name">Written essay</div>
+    <div class="doc-detail">Essay.docx</div>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px;">
+      <button onclick="document.getElementById('pdf-modal').style.display='flex'" class="scroll-btn" style="cursor:pointer; border:none; background:none; padding:0;">👁 View Essay</button>
+      <a class="scroll-btn" href="EU APPLICATION DOC.pdf" download="Essay">↓ Download Essay</a>
+    </div>
+  </div>
+  <span class="doc-badge badge-pending">Download</span>
+</div>
+
+<!-- PDF Modal -->
+<div id="pdf-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:#fff; border-radius:12px; width:100%; max-width:860px; height:90vh; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #e5e5e5;">
+      <span style="font-weight:500; font-size:15px;">Essay.pdf</span>
+      <div style="display:flex; gap:8px;">
+        <a href="EU APPLICATION DOC.pdf" download="Essay" style="font-size:13px; padding:6px 12px; border:1px solid #ccc; border-radius:6px; text-decoration:none; color:#333;">↓ Download</a>
+        <button onclick="document.getElementById('pdf-modal').style.display='none'" style="font-size:13px; padding:6px 12px; border:1px solid #ccc; border-radius:6px; background:none; cursor:pointer;">✕ Close</button>
+      </div>
+    </div>
+    <iframe src="EU APPLICATION DOC.pdf" style="flex:1; border:none; width:100%;"></iframe>
+  </div>
+</div>
+
+      <!-- 05 — Digital photo (Selfie.jpeg, small thumbnail) -->
+      <div class="doc-item pending">
+        <div class="doc-num">05</div>
+        <div class="doc-content">
+          <div class="doc-name">Digital photo</div>
+          <div class="doc-detail">photo. Click to view full screen.</div>
+          <div class="selfie-wrap">
+            <img
+              src="Selfie.jpeg"
+              alt="Portrait photo"
+              class="selfie-thumb"
+              onclick="openLightbox('Selfie.jpeg','Digital photo','Selfie.jpeg')"
+              title="Click to view full screen"
+            />
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <button class="view-btn" onclick="openLightbox('Selfie.jpeg','Digital photo','Selfie.jpeg')">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                View full screen
+              </button>
+              <a class="dl-btn" href="Selfie.jpeg" download>
+                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download
+              </a>
+            </div>
+          </div>
+        </div>
+        <span class="doc-badge badge-pending">To prepare</span>
+      </div>
+
+<!-- 06 — Passport -->
+<div class="doc-item pending">
+  <div class="doc-num">06</div>
+  <div class="doc-content">
+    <div class="doc-name">Valid passport or national ID</div>
+    <div class="doc-detail">Copy of a current valid ID.</div>
+    <div class="doc-upload" id="d06">
+      <div id="d06-r" style="display:block;">
+        <img src="ID1.jpeg" alt="Valid passport or national ID"
+             style="width:120px; border-radius:4px; cursor:pointer;"
+             oncontextmenu="return false;" draggable="false"
+             onclick="this.style.width = this.style.width === '100%' ? '120px' : '100%'" />
+      </div>
+    </div>
+  </div>
+  <span class="doc-badge badge-pending">To prepare</span>
+</div>
+      <!-- 07 — Lånekassen -->
+<div class="doc-item pending">
+  <div class="doc-num">07</div>
+  <div class="doc-content">
+    <div class="doc-name">How I plan to cover tuition costs</div>
+    <div class="doc-detail"></div>
+    <div class="lanekassen-box">
+      <img src="lanekasse.png" alt="Lånekassen logo" style="height:36px; width:auto; margin-bottom:10px; display:block;" />
+      <p>As a Norwegian student, <strong style="color:rgba(245,241,234,0.85);">Lånekassen</strong> — the Norwegian State Educational Loan Fund — provides financial support for eligible students studying abroad, covering both tuition and living costs.</p>
+      <a class="lanekassen-link" href="https://lanekassen.no/en-US/" target="_blank" rel="noopener">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        lanekassen.no — Website
+      </a>
+    </div>
+  </div>
+  <span class="doc-badge badge-pending">To prepare</span>
+</div>
+
+      <!-- 08 -->
+      <div class="doc-item later">
+        <div class="doc-num">08</div>
+        <div class="doc-content">
+          <div class="doc-name">Interview</div>
+          <div class="doc-detail">Hi, I’m still looking at some options and not fully sure yet about enrolling. Could you let me know the deadline for the October intake, how soon the interview would need to be done, I just need some time to fully decide.</div>
+        </div>
+        <span class="doc-badge badge-later">Question</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ENGLISH -->
+<section id="english" style="background:var(--green);">
+  <div class="container fade-up">
+    <div class="section-label" style="color:var(--green-light);">Requirement met</div>
+    <h2 class="section-title" style="color:var(--cream);">English proficiency</h2>
+    <div class="english-box">
+      <div class="english-row">
+        <span class="elabel">Subject</span>
+        <span class="eval">Engelsk VG1 — mandatory Norwegian high school English</span>
+      </div>
+      <div class="english-row">
+        <span class="elabel">Grade achieved</span>
+        <span class="eval">5 / 6 <span class="eval-badge">✓</span></span>
+      </div>
+      <div class="english-row">
+        <span class="elabel">Requirement</span>
+        <span class="eval">Minimum grade 4</span>
+      </div>
+    </div>
+
+    <div class="grade-static-preview">
+      <div class="grade-static-preview-row">
+        <div class="grade-static-info">
+          <svg width="22" height="22" fill="none" stroke="#C8DDD6" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <div>
+            <p>Grade transcript</p>
+            <span>English 5/6 ✓</span>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="view-btn" style="background:#5DCAA5;color:#04342C;" onclick="openLightbox('GRADE5.png','English proficiency — Grade 5/6','GRADE5.png')">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View
+          </button>
+          <a class="dl-btn" href="GRADE5.png" download style="color:rgba(200,221,214,0.6);border-color:rgba(200,221,214,0.18);">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container fade-up">
+    <div class="section-label">Some of my work</div>
+    <h2 class="section-title">Creative portfolio</h2>
+    <a class="portfolio-link" href="https://qariyen.github.io/Ariyen/" target="_blank" rel="noopener">
+      <div class="portfolio-top">
+        <div class="portfolio-title">qariyen.github.io<br>/Ariyen</div>
+        <div class="portfolio-arrow">↗</div>
+      </div>
+      <p class="portfolio-desc">showcase of some projects — Figma app design, Shopify e-commerce, 3D modelling, clothing brand mockups, marketing videos, and packaging redesign.</p>
+      <div class="chips">
+        <span class="chip">Figma</span>
+        <span class="chip">Shapr3D</span>
+        <span class="chip">Tinkercad</span>
+        <span class="chip">CapCut / PikiMov</span>
+        <span class="chip">UltiMaker Cura</span>
+        <span class="chip">Shopify</span>
+        <span class="chip">Microsoft 365</span>
+        <span class="chip">Vibe Coding</span>
+      </div>
+      <div class="portfolio-url">→ qariyen.github.io/Ariyen/</div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-label">Thank you for your consideration, Kind regards,</div>
+  <h2 class="contact-title">Ariyen<br><em></em></h2>
+  <p class="contact-sub"></p>
+  <a class="contact-email" href="mailto:contactariyen@gmail.com">contactariyen@gmail.com</a>
+  <div class="contact-footer">EU Business School Application · Ariyen Qarlik · Oslo, Norway</div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  function loadVideo(input) {
+    if (!input.files[0]) return;
+    document.getElementById('videoEl').src = URL.createObjectURL(input.files[0]);
+    document.getElementById('videoPlaceholder').style.display = 'none';
+    document.getElementById('videoResult').style.display = 'block';
+  }
+
+  function loadDocImg(input, id, caption) {
+    if (!input.files[0]) return;
+    const url = URL.createObjectURL(input.files[0]);
+    const rowEl = document.getElementById(id + '-row');
+    if (rowEl) rowEl.style.display = 'none';
+    const fi = document.getElementById(id).querySelector('input[type="file"]');
+    if (fi) fi.style.display = 'none';
+    const r = document.getElementById(id + '-r');
+    r.style.display = 'block';
+    const fname = input.files[0].name;
+    r.innerHTML = `<div style="display:flex;align-items:center;justify-content:space-between;padding:0.65rem 1rem;gap:8px;flex-wrap:wrap;">
+      <span style="font-size:12px;color:rgba(245,241,234,0.35);">Uploaded ✓</span>
+      <div style="display:flex;gap:8px;">
+        <button class="view-btn" onclick="openLightbox('${url}','${caption}','${fname}')">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          View
+        </button>
+        <a class="dl-btn" href="${url}" download="${fname}">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+    </div>`;
+  }
+
+  function loadLetter(input, num) {
+    if (!input.files[0]) return;
+    const file = input.files[0];
+    const url = URL.createObjectURL(file);
+    document.getElementById('letter' + num + '-row').style.display = 'none';
+    const slot = document.getElementById('letter' + num);
+    const fi = slot.querySelector('input[type="file"]');
+    if (fi) fi.style.display = 'none';
+    const done = document.getElementById('letter' + num + '-done');
+    done.style.display = 'block';
+    const isPDF = file.type === 'application/pdf' || file.name.endsWith('.pdf');
+    if (isPDF) {
+      done.innerHTML = `<div class="letter-done">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Letter ${num} — PDF uploaded ✓
+        <a class="dl-btn" href="${url}" download="${file.name}">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>`;
+    } else {
+      done.innerHTML = `<div style="display:flex;align-items:center;justify-content:space-between;padding:0.65rem 1rem;gap:8px;flex-wrap:wrap;">
+        <span style="font-size:12px;color:rgba(245,241,234,0.35);">Letter ${num} uploaded ✓</span>
+        <div style="display:flex;gap:8px;">
+          <button class="view-btn" onclick="openLightbox('${url}','Letter ${num}','${file.name}')">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View
+          </button>
+          <a class="dl-btn" href="${url}" download="${file.name}">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+        </div>
+      </div>`;
+    }
+  }
+
+  function scrollToVideo() {
+    document.getElementById('videoBox').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  /* LIGHTBOX */
+  function openLightbox(src, caption, filename) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = caption || '';
+    document.getElementById('lightbox-caption').textContent = caption || '';
+    const dl = document.getElementById('lightbox-dl');
+    dl.href = src;
+    dl.download = filename || 'document';
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(e) {
+    if (!e) { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; return; }
+    const img = document.getElementById('lightbox-img');
+    const dl = document.getElementById('lightbox-dl');
+    if (e.target === img || e.target === dl || dl.contains(e.target)) return;
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
