@@ -49,7 +49,6 @@
     .media-result { display: none; }
     .media-result video { width: 100%; display: block; border-radius: 10px; }
 
-    /* DOCS */
     .doc-list { display: flex; flex-direction: column; gap: 8px; }
     .doc-item { display: flex; align-items: flex-start; gap: 1.5rem; padding: 1.5rem 1.75rem; background: rgba(255,255,255,0.06); border: 0.5px solid rgba(245,241,234,0.1); border-left: 3px solid transparent; border-radius: 4px; transition: background 0.2s; }
     .doc-item:hover { background: rgba(255,255,255,0.1); }
@@ -65,7 +64,6 @@
     .badge-pending { background: rgba(184,147,90,0.12); color: var(--gold); }
     .badge-later { background: rgba(245,241,234,0.06); color: rgba(245,241,234,0.4); }
 
-    /* STATIC PREVIEW ROW */
     .doc-static-preview { border: 1.5px solid rgba(184,147,90,0.25); border-radius: 8px; background: rgba(245,241,234,0.04); overflow: hidden; }
     .doc-static-preview-row { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; gap: 10px; flex-wrap: wrap; }
     .doc-static-info { display: flex; align-items: center; gap: 10px; }
@@ -73,7 +71,6 @@
     .doc-static-info span { font-size: 11px; color: #5DCAA5; font-weight: 500; }
     .btn-row { display: flex; gap: 8px; align-items: center; }
 
-    /* UPLOAD BOXES */
     .doc-upload { border: 1.5px dashed rgba(184,147,90,0.35); border-radius: 8px; background: rgba(245,241,234,0.04); position: relative; overflow: hidden; cursor: pointer; }
     .doc-upload input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 2; width: 100%; height: 100%; }
     .doc-upload-row { display: flex; align-items: center; gap: 10px; padding: 0.7rem 1rem; pointer-events: none; }
@@ -83,7 +80,6 @@
     .doc-upload-result { display: none; }
     .pdf-done { padding: 0.7rem 1rem; font-size: 13px; color: #5DCAA5; font-weight: 500; display: flex; align-items: center; gap: 8px; }
 
-    /* VIEW BUTTON — bold gold, highly visible */
     .view-btn {
       display: inline-flex; align-items: center; gap: 7px;
       font-size: 13px; font-weight: 600;
@@ -97,7 +93,6 @@
     .view-btn:hover { background: #c9a368; transform: scale(1.04); }
     .view-btn:active { transform: scale(0.97); }
 
-    /* DOWNLOAD BUTTON */
     .dl-btn {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 12px; font-weight: 500;
@@ -109,7 +104,6 @@
     }
     .dl-btn:hover { background: rgba(245,241,234,0.13); }
 
-    /* LETTER SLOTS */
     .letter-pair { display: flex; flex-direction: column; gap: 8px; }
     .letter-slot { border: 1.5px dashed rgba(184,147,90,0.35); border-radius: 8px; background: rgba(245,241,234,0.04); position: relative; overflow: hidden; cursor: pointer; }
     .letter-slot input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 2; width: 100%; height: 100%; }
@@ -119,22 +113,27 @@
     .letter-slot-row span { font-size: 11px; color: var(--gold); font-weight: 500; display: block; margin-top: 1px; }
     .letter-done { padding: 0.65rem 1rem; font-size: 13px; color: #5DCAA5; font-weight: 500; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
-    /* SELFIE — small portrait thumbnail */
+    /* LETTER 1 LINK STYLE */
+    .letter-link-slot { border: 1.5px solid rgba(93,202,165,0.3); border-radius: 8px; background: rgba(93,202,165,0.05); display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1rem; gap: 10px; flex-wrap: wrap; }
+    .letter-link-info { display: flex; align-items: center; gap: 10px; }
+    .letter-link-info svg { opacity: 0.6; flex-shrink: 0; }
+    .letter-link-info p { font-size: 13px; color: rgba(245,241,234,0.75); font-weight: 500; }
+    .letter-link-info span { font-size: 11px; color: #5DCAA5; display: block; margin-top: 2px; }
+    .gdrive-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: #04342C; background: #5DCAA5; border: none; padding: 9px 20px; border-radius: 99px; cursor: pointer; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background 0.18s, transform 0.15s; }
+    .gdrive-btn:hover { background: #7edfc0; transform: scale(1.04); }
+
     .selfie-wrap { display: flex; align-items: center; gap: 14px; margin-top: 4px; }
     .selfie-thumb { width: 68px; height: 86px; object-fit: cover; border-radius: 6px; border: 2px solid rgba(184,147,90,0.45); cursor: pointer; transition: transform 0.18s, border-color 0.18s; flex-shrink: 0; display: block; }
     .selfie-thumb:hover { transform: scale(1.07); border-color: var(--gold); }
 
-    /* LÅNEKASSEN INFO */
     .lanekassen-box { border: 1.5px solid rgba(93,202,165,0.22); border-radius: 8px; background: rgba(93,202,165,0.05); padding: 1rem 1.2rem; margin-bottom: 10px; }
     .lanekassen-box p { font-size: 13px; color: rgba(245,241,234,0.62); line-height: 1.65; margin-bottom: 10px; }
     .lanekassen-link { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #5DCAA5; border-bottom: 0.5px solid rgba(93,202,165,0.4); text-decoration: none; transition: color 0.2s; }
     .lanekassen-link:hover { color: #7edfc0; }
 
-    /* SCROLL BUTTON */
     .scroll-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gold); font-weight: 500; background: rgba(184,147,90,0.1); border: 0.5px solid rgba(184,147,90,0.3); padding: 6px 14px; border-radius: 99px; cursor: pointer; text-decoration: none; transition: background 0.2s; }
     .scroll-btn:hover { background: rgba(184,147,90,0.2); }
 
-    /* ENGLISH SECTION */
     .english-box { background: rgba(255,255,255,0.06); border: 0.5px solid rgba(200,221,214,0.15); border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem; }
     .english-row { display: flex; align-items: center; gap: 10px; padding: 1rem 1.5rem; border-bottom: 0.5px solid rgba(255,255,255,0.07); font-size: 14px; }
     .english-row:last-child { border-bottom: none; }
@@ -142,7 +141,6 @@
     .eval { color: var(--cream); font-weight: 500; }
     .eval-badge { background: rgba(93,202,165,0.15); color: #5DCAA5; padding: 3px 10px; border-radius: 99px; font-size: 12px; margin-left: 8px; }
 
-    /* GRADE PREVIEW */
     .grade-static-preview { border: 1.5px solid rgba(200,221,214,0.2); border-radius: 12px; background: rgba(255,255,255,0.03); overflow: hidden; }
     .grade-static-preview-row { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.25rem; gap: 12px; flex-wrap: wrap; }
     .grade-static-info { display: flex; align-items: center; gap: 10px; }
@@ -150,7 +148,6 @@
     .grade-static-info p { font-size: 13px; color: var(--green-light); }
     .grade-static-info span { font-size: 12px; color: rgba(200,221,214,0.4); display: block; margin-top: 2px; }
 
-    /* PORTFOLIO */
     .portfolio-link { display: block; padding: 3rem; background: var(--white); border: 0.5px solid var(--border); text-decoration: none; transition: box-shadow 0.25s, transform 0.25s; position: relative; overflow: hidden; }
     .portfolio-link::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(184,147,90,0.05) 0%, transparent 60%); pointer-events: none; }
     .portfolio-link:hover { box-shadow: 0 12px 40px rgba(26,23,20,0.1); transform: translateY(-2px); }
@@ -175,7 +172,6 @@
     .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* LIGHTBOX */
     #lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(10,8,6,0.96); align-items: center; justify-content: center; cursor: zoom-out; }
     #lightbox.open { display: flex; }
     #lightbox-img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: 6px; cursor: default; }
@@ -196,7 +192,6 @@
 </head>
 <body>
 
-<!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLightbox(event)">
   <span id="lightbox-close" onclick="closeLightbox()">&times;</span>
   <img id="lightbox-img" src="" alt="" />
@@ -220,7 +215,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">EU Business School — Application</div>
   <h1>Ariyen<br><em>Qarlik</em></h1>
@@ -232,11 +226,8 @@
 </section>
 
 <div class="divider"></div>
-
-
 <div class="divider"></div>
 
-<!-- DOCUMENTS -->
 <section id="documents" style="background:var(--ink);">
   <div class="container fade-up">
     <div class="section-label" style="color:var(--gold);">Application checklist</div>
@@ -289,15 +280,22 @@
           <div class="doc-detail">From employers or mentors.</div>
           <div class="letter-pair">
 
-            <div class="letter-slot" id="letter1">
-              <input type="file" accept=".pdf,image/*" onchange="loadLetter(this,1)" />
-              <div class="letter-slot-row" id="letter1-row">
-                <svg width="16" height="16" fill="none" stroke="#B8935A" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                <div><p>Letter 1</p><span>Click to upload PDF or image</span></div>
+            <!-- Letter 1 — Google Drive link -->
+            <div class="letter-link-slot">
+              <div class="letter-link-info">
+                <svg width="16" height="16" fill="none" stroke="#5DCAA5" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <div>
+                  <p>Letter 1</p>
+                  <span>Google Drive — click to open ✓</span>
+                </div>
               </div>
-              <div id="letter1-done" style="display:none;"></div>
+              <a class="gdrive-btn" href="https://drive.google.com/file/d/1FCk5FL6ePrg9sqNZvytF12WzUiMRXTkD/view?usp=sharing" target="_blank" rel="noopener">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Open letter
+              </a>
             </div>
 
+            <!-- Letter 2 — upload slot -->
             <div class="letter-slot" id="letter2">
               <input type="file" accept=".pdf,image/*" onchange="loadLetter(this,2)" />
               <div class="letter-slot-row" id="letter2-row">
@@ -312,35 +310,35 @@
         <span class="doc-badge badge-pending">To prepare</span>
       </div>
 
- <!-- 04 -->
-<div class="doc-item pending">
-  <div class="doc-num">04</div>
-  <div class="doc-content">
-    <div class="doc-name">Written essay</div>
-    <div class="doc-detail">Essay.docx</div>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px;">
-      <button onclick="document.getElementById('pdf-modal').style.display='flex'" class="scroll-btn" style="cursor:pointer; border:none; background:none; padding:0;">👁 View Essay</button>
-      <a class="scroll-btn" href="EU APPLICATION DOC.pdf" download="Essay">↓ Download Essay</a>
-    </div>
-  </div>
-  <span class="doc-badge badge-pending">Download</span>
-</div>
-
-<!-- PDF Modal -->
-<div id="pdf-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center; padding:20px;">
-  <div style="background:#fff; border-radius:12px; width:100%; max-width:860px; height:90vh; display:flex; flex-direction:column; overflow:hidden;">
-    <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #e5e5e5;">
-      <span style="font-weight:500; font-size:15px;">Essay.pdf</span>
-      <div style="display:flex; gap:8px;">
-        <a href="EU APPLICATION DOC.pdf" download="Essay" style="font-size:13px; padding:6px 12px; border:1px solid #ccc; border-radius:6px; text-decoration:none; color:#333;">↓ Download</a>
-        <button onclick="document.getElementById('pdf-modal').style.display='none'" style="font-size:13px; padding:6px 12px; border:1px solid #ccc; border-radius:6px; background:none; cursor:pointer;">✕ Close</button>
+      <!-- 04 -->
+      <div class="doc-item pending">
+        <div class="doc-num">04</div>
+        <div class="doc-content">
+          <div class="doc-name">Written essay</div>
+          <div class="doc-detail">Essay.docx</div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px;">
+            <button onclick="document.getElementById('pdf-modal').style.display='flex'" class="scroll-btn" style="cursor:pointer; border:none; background:none; padding:0;">👁 View Essay</button>
+            <a class="scroll-btn" href="EU APPLICATION DOC.pdf" download="Essay">↓ Download Essay</a>
+          </div>
+        </div>
+        <span class="doc-badge badge-pending">Download</span>
       </div>
-    </div>
-    <iframe src="EU APPLICATION DOC.pdf" style="flex:1; border:none; width:100%;"></iframe>
-  </div>
-</div>
 
-      <!-- 05 — Digital photo (Selfie.jpeg, small thumbnail) -->
+      <!-- PDF Modal -->
+      <div id="pdf-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center; padding:20px;">
+        <div style="background:#fff; border-radius:12px; width:100%; max-width:860px; height:90vh; display:flex; flex-direction:column; overflow:hidden;">
+          <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #e5e5e5;">
+            <span style="font-weight:500; font-size:15px;">Essay.pdf</span>
+            <div style="display:flex; gap:8px;">
+              <a href="EU APPLICATION DOC.pdf" download="Essay" style="font-size:13px; padding:6px 12px; border:1px solid #ccc; border-radius:6px; text-decoration:none; color:#333;">↓ Download</a>
+              <button onclick="document.getElementById('pdf-modal').style.display='none'" style="font-size:13px; padding:6px 12px; border:1px solid #ccc; border-radius:6px; background:none; cursor:pointer;">✕ Close</button>
+            </div>
+          </div>
+          <iframe src="EU APPLICATION DOC.pdf" style="flex:1; border:none; width:100%;"></iframe>
+        </div>
+      </div>
+
+      <!-- 05 — Digital photo -->
       <div class="doc-item pending">
         <div class="doc-num">05</div>
         <div class="doc-content">
@@ -369,47 +367,48 @@
         <span class="doc-badge badge-pending">To prepare</span>
       </div>
 
-<!-- 06 — Passport -->
-<div class="doc-item pending">
-  <div class="doc-num">06</div>
-  <div class="doc-content">
-    <div class="doc-name">Valid passport or national ID</div>
-    <div class="doc-detail">Copy of a current valid ID.</div>
-    <div class="doc-upload" id="d06">
-      <div id="d06-r" style="display:block;">
-        <img src="ID1.jpeg" alt="Valid passport or national ID"
-             style="width:120px; border-radius:4px; cursor:pointer;"
-             oncontextmenu="return false;" draggable="false"
-             onclick="this.style.width = this.style.width === '100%' ? '120px' : '100%'" />
+      <!-- 06 — Passport -->
+      <div class="doc-item pending">
+        <div class="doc-num">06</div>
+        <div class="doc-content">
+          <div class="doc-name">Valid passport or national ID</div>
+          <div class="doc-detail">Copy of a current valid ID.</div>
+          <div class="doc-upload" id="d06">
+            <div id="d06-r" style="display:block;">
+              <img src="ID1.jpeg" alt="Valid passport or national ID"
+                   style="width:120px; border-radius:4px; cursor:pointer;"
+                   oncontextmenu="return false;" draggable="false"
+                   onclick="this.style.width = this.style.width === '100%' ? '120px' : '100%'" />
+            </div>
+          </div>
+        </div>
+        <span class="doc-badge badge-pending">To prepare</span>
       </div>
-    </div>
-  </div>
-  <span class="doc-badge badge-pending">To prepare</span>
-</div>
+
       <!-- 07 — Lånekassen -->
-<div class="doc-item pending">
-  <div class="doc-num">07</div>
-  <div class="doc-content">
-    <div class="doc-name">How I plan to cover tuition costs</div>
-    <div class="doc-detail"></div>
-    <div class="lanekassen-box">
-      <img src="lanekasse.png" alt="Lånekassen logo" style="height:36px; width:auto; margin-bottom:10px; display:block;" />
-      <p>As a Norwegian student, <strong style="color:rgba(245,241,234,0.85);">Lånekassen</strong> — the Norwegian State Educational Loan Fund — provides financial support for eligible students studying abroad, covering both tuition and living costs.</p>
-      <a class="lanekassen-link" href="https://lanekassen.no/en-US/" target="_blank" rel="noopener">
-        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        lanekassen.no — Website
-      </a>
-    </div>
-  </div>
-  <span class="doc-badge badge-pending">To prepare</span>
-</div>
+      <div class="doc-item pending">
+        <div class="doc-num">07</div>
+        <div class="doc-content">
+          <div class="doc-name">How I plan to cover tuition costs</div>
+          <div class="doc-detail"></div>
+          <div class="lanekassen-box">
+            <img src="lanekasse.png" alt="Lånekassen logo" style="height:36px; width:auto; margin-bottom:10px; display:block;" />
+            <p>As a Norwegian student, <strong style="color:rgba(245,241,234,0.85);">Lånekassen</strong> — the Norwegian State Educational Loan Fund — provides financial support for eligible students studying abroad, covering both tuition and living costs.</p>
+            <a class="lanekassen-link" href="https://lanekassen.no/en-US/" target="_blank" rel="noopener">
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              lanekassen.no — Website
+            </a>
+          </div>
+        </div>
+        <span class="doc-badge badge-pending">To prepare</span>
+      </div>
 
       <!-- 08 -->
       <div class="doc-item later">
         <div class="doc-num">08</div>
         <div class="doc-content">
           <div class="doc-name">Interview</div>
-          <div class="doc-detail">Hi, I’m still looking at some options and not fully sure yet about enrolling. Could you let me know the deadline for the October intake, how soon the interview would need to be done, I just need some time to fully decide.</div>
+          <div class="doc-detail">Hi, I'm still looking at some options and not fully sure yet about enrolling. Could you let me know the deadline for the October intake, how soon the interview would need to be done, I just need some time to fully decide.</div>
         </div>
         <span class="doc-badge badge-later">Question</span>
       </div>
@@ -439,7 +438,6 @@
         <span class="eval">Minimum grade 4</span>
       </div>
     </div>
-
     <div class="grade-static-preview">
       <div class="grade-static-preview-row">
         <div class="grade-static-info">
@@ -509,38 +507,6 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  function loadVideo(input) {
-    if (!input.files[0]) return;
-    document.getElementById('videoEl').src = URL.createObjectURL(input.files[0]);
-    document.getElementById('videoPlaceholder').style.display = 'none';
-    document.getElementById('videoResult').style.display = 'block';
-  }
-
-  function loadDocImg(input, id, caption) {
-    if (!input.files[0]) return;
-    const url = URL.createObjectURL(input.files[0]);
-    const rowEl = document.getElementById(id + '-row');
-    if (rowEl) rowEl.style.display = 'none';
-    const fi = document.getElementById(id).querySelector('input[type="file"]');
-    if (fi) fi.style.display = 'none';
-    const r = document.getElementById(id + '-r');
-    r.style.display = 'block';
-    const fname = input.files[0].name;
-    r.innerHTML = `<div style="display:flex;align-items:center;justify-content:space-between;padding:0.65rem 1rem;gap:8px;flex-wrap:wrap;">
-      <span style="font-size:12px;color:rgba(245,241,234,0.35);">Uploaded ✓</span>
-      <div style="display:flex;gap:8px;">
-        <button class="view-btn" onclick="openLightbox('${url}','${caption}','${fname}')">
-          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          View
-        </button>
-        <a class="dl-btn" href="${url}" download="${fname}">
-          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download
-        </a>
-      </div>
-    </div>`;
-  }
-
   function loadLetter(input, num) {
     if (!input.files[0]) return;
     const file = input.files[0];
@@ -578,11 +544,6 @@
     }
   }
 
-  function scrollToVideo() {
-    document.getElementById('videoBox').scrollIntoView({ behavior: 'smooth' });
-  }
-
-  /* LIGHTBOX */
   function openLightbox(src, caption, filename) {
     document.getElementById('lightbox-img').src = src;
     document.getElementById('lightbox-img').alt = caption || '';
